@@ -1,7 +1,9 @@
 package rezg.rezos.bohoda.cllient.connectors;
 
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class ConnectParams {
 
@@ -11,9 +13,11 @@ public class ConnectParams {
 	public static final int POST_PARAMS = 3;
 
 	int paramType = 0;
+	int size = 0;
+	
 	Map<String, Object> params = null;
 
-	ConnectParams(int paramType,int size) {
+	public ConnectParams(int paramType,int size) {
 		this.paramType = paramType;
 		params = new HashMap(size);
 	}
@@ -50,5 +54,16 @@ public class ConnectParams {
 		this.params = params;
 	}
 
+	public int getSize(){
+		if(null == params)
+			return 0;
+		return this.params.size();
+	}
 	
+	public Set<String> getKeys(){
+		if(null!=params)
+			return params.keySet();
+		return new HashSet();
+		
+	}
 }
